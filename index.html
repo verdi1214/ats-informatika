@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Portofolio Verdiansyah X-RPL</title>
+  <style>
+    /* ======================================================
+       GLOBAL STYLE
+    =======================================================*/
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a2938, #3498db);
+      background-image: url(https://th.bing.com/th/id/OIP._0KgqEbcksjWvoExiMscggHaEK?w=333&h=187&c=7&r=0&o=5&dpr=1.5&pid=1.7);
+      background-attachment: cover;
+      background-size: auto;
+      color: #fff;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { margin-bottom: 10px; }
+    a { color: #ffd700; text-decoration: none; }
+    section { padding: 40px 20px; max-width: 900px; margin: auto; }
+
+    /* ======================================================
+       ANIMASI GLOBAL
+    =======================================================*/
+    .fade-in { animation: fadeIn 1.5s ease forwards; opacity: 0; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide-left { animation: slideLeft 1.2s ease forwards; opacity: 0; }
+    @keyframes slideLeft {
+      from { opacity: 0; transform: translateX(100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .slide-right { animation: slideRight 1.2s ease forwards; opacity: 0; }
+    @keyframes slideRight {
+      from { opacity: 0; transform: translateX(-100px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    .bounce { animation: bounce 2s infinite; }
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-20px); }
+      60% { transform: translateY(-10px); }
+    }
+
+    .pulse { animation: pulse 2s infinite; }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .glow {
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow: 0 0 5px #fff, 0 0 10px #00e6e6; }
+      to { text-shadow: 0 0 20px #00ffcc, 0 0 30px #00ffff; }
+    }
+
+    .rotate { animation: rotate 3s linear infinite; }
+    @keyframes rotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .flip-in { animation: flipIn 1.5s ease forwards; transform: rotateY(90deg); opacity: 0; }
+    @keyframes flipIn {
+      from { transform: rotateY(90deg); opacity: 0; }
+      to { transform: rotateY(0); opacity: 1; }
+    }
+
+    .zoom-in { animation: zoomIn 1s ease forwards; transform: scale(0.7); opacity: 0; }
+    @keyframes zoomIn {
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .typing {
+      border-right: 2px solid #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 0;
+      animation: typing 4s steps(40, end) forwards, blink 0.7s infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      50% { border-color: transparent; }
+    }
+
+    /* ======================================================
+       LOGIN PAGE
+    =======================================================*/
+    #loginPage {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+    .login-box {
+      background: rgba(0,0,0,0.6);
+      padding: 30px;
+      border-radius: 12px;
+      text-align: center;
+      width: 320px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.7);
+      transform: scale(0.9);
+      animation: zoomIn 1s ease forwards;
+    }
+    .login-box h2 { margin-bottom: 20px; animation: fadeIn 1.5s ease forwards; }
+    .login-box input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 6px;
+      outline: none;
+      transition: 0.3s;
+    }
+    .login-box input:focus { box-shadow: 0 0 10px #3498db; }
+    .login-box button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background: #3498db;
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .login-box button:hover { background: #2980b9; transform: scale(1.05); }
+
+    /* Background animasi */
+    .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      animation: move 10s linear infinite;
+    }
+    @keyframes move {
+      from { transform: translateY(100vh); opacity: 0; }
+      to { transform: translateY(-10vh); opacity: 1; }
+    }
+
+    /* ======================================================
+       PORTFOLIO PAGE
+    =======================================================*/
+    #portfolioPage { display: none; }
+    header {
+      background: rgba(0,0,0,0.7);
+      padding: 20px;
+      text-align: center;
+      animation: slideDown 1.2s ease forwards;
+    }
+    @keyframes slideDown {
+      from { transform: translateY(-80px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    nav a {
+      margin: 0 15px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+    nav a:hover { text-decoration: underline; color: #00ffcc; }
+
+    .card {
+      background: rgba(255,255,255,0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      transition: 0.3s;
+      opacity: 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .card:hover { transform: translateY(-5px) scale(1.02); }
+    .card.show { animation: fadeIn 1.2s ease forwards; }
+
+    /* efek highlight */
+    .card::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: rotate(45deg);
+      animation: shine 4s infinite;
+    }
+    @keyframes shine {
+      from { transform: translateX(-100%) rotate(45deg); }
+      to { transform: translateX(100%) rotate(45deg); }
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0,0,0,0.7);
+      margin-top: 40px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    /* ======================================================
+       TIMELINE STYLE
+    =======================================================*/
+    #daysList {
+      max-height: 400px;
+      overflow-y: scroll;
+      padding: 15px;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 10px;
+      background: rgba(0,0,0,0.4);
+    }
+    #daysList li {
+      padding: 6px;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      transition: 0.3s;
+    }
+    #daysList li:hover {
+      background: rgba(255,255,255,0.1);
+      transform: translateX(5px) scale(1.02);
+    }
+    #daysList li:last-child { border-bottom: none; }
+
+    /* ======================================================
+       ANIMASI TAMBAHAN DEKORASI
+    =======================================================*/
+    .wave {
+      display: inline-block;
+      animation: wave 2s infinite;
+    }
+    @keyframes wave {
+      0% { transform: rotate(0deg); }
+      20% { transform: rotate(20deg); }
+      40% { transform: rotate(-15deg); }
+      60% { transform: rotate(10deg); }
+      80% { transform: rotate(-10deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    .shake { animation: shake 1s infinite; }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================
+       LOGIN PAGE
+  =======================================================-->
+  <div id="loginPage">
+    <div class="login-box">
+      <h2 class="bounce glow">Login</h2>
+      <input type="text" id="username" placeholder="Masukkan Username">
+      <input type="password" id="password" placeholder="Masukkan Password">
+      <button onclick="login()" class="pulse">Masuk</button>
+    </div>
+    <!-- Dekorasi lingkaran bergerak -->
+    <div class="circle" style="width:50px;height:50px;left:20%;animation-duration:12s;"></div>
+    <div class="circle" style="width:80px;height:80px;left:60%;animation-duration:15s;"></div>
+    <div class="circle" style="width:40px;height:40px;left:80%;animation-duration:18s;"></div>
+  </div>
+
+  <!-- ======================================================
+       PORTFOLIO PAGE
+  =======================================================-->
+  <div id="portfolioPage">
+    <header>
+      <h1 class="typing">Portofolio Verdiansyah</h1>
+      <nav>
+        <a href="#about">Tentang Saya</a>
+        <a href="#tasks">Tugas</a>
+        <a href="#projects">Project</a>
+        <a href="#contact">Kontak</a>
+        <a href="#lainnya">Lainnya</a>
+        <a href="#" onclick="logout()">Logout</a>
+      </nav>
+    </header>
+
+    <section id="about">
+      <h2 class="slide-left">👤 Data Pribadi</h2>
+      <div class="card flip-in">
+        <p><strong>Nama:</strong> Verdiansyah</p>
+        <p><strong>Umur:</strong> 16 Tahun</p>
+        <p><strong>Email:</strong> verdi1021@gmail.com</p>
+        <p><strong>Telepon:</strong> +62 856-9399-5812</p>
+        <p><strong>Alamat:</strong> Jl. Cilandak Dalam I/8,  Cilandak, Jakarta Selatan</p>
+      </div>
+    </section>
+
+    <section id="tasks">
+      <h2 class="slide-right">📚 Tugas-Tugas</h2>
+      <div class="card zoom-in">
+        <ul>
+          <li>Tugas 1 - Desain Website</li>
+          <li>Tugas 2 - Membuat Portofolio</li>
+          <li>Tugas 3 - Membuat Form Pendaftaran/Login</li>
+          <li>Tugas 4 - Mempraktekan HTML Dasar</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="slide-left">💻 Project</h2>
+      <div class="card">
+        <h3>Project 1: Website Portofolio <span class="wave">👋</span></h3>
+        <p>Membuat website portofolio modern dengan HTML, CSS, dan JavaScript.</p>
+      </div>
+      <div class="card">
+        <h3>Project 2: Membuat aplikasi sederhana</h3>
+        <p>Aplikasi sederhana untuk mencatat dan mengelola tugas harian.</p>
+      </div>
+      <div class="card">
+        <h3>Project 3: Sistem Informasi</h3>
+        <p>Membangun sistem informasi sekolah berbasis web.</p>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2 class="slide-right">📩 Kontak</h2>
+      <div class="card shake">
+        <p>Jika ada keperluan penting bisa menghubungi saya dengan:</p>
+        <p><a href="mailto:verdiansyah@gmail.com">verdiansyah@gmail.com</a></p>
+        <p><a href="phonenumber:number">+62 856-9399-5812</a></p>
+      </div>
+    </section>
+
+    <section id="lainnya">
+      <h2 class="slide-left">👨‍🎓 Lainnya</h2>
+      <div class="card">
+        <h3>Hobby</h3>
+        <ul>
+          <li>Basket 🏀</li>
+          <li>Futsal ⚽️</li>
+          <li>Coding 💻</li>
+          <li>Playing Guitar 🎸</li>
+          <li>Hiking 🌋</li>
+          <li>Playing Billiard 🎱</li>
+        </ul> </br>
+
+
+        <h3>Media Sosial</h3>
+        <p><strong>Instagram:</strong> @verdifza</p>
+        <p><strong>Threads:</strong> @verdifza</p>
+        <p><strong>Tiktok:</strong> @ver</p>
+        <p><strong>X:</strong> @verdi1214</p>
+      </div>
+
+    <footer>
+      <p>&copy; 2025 Portofolio Verdiansyah X-RPL</p>
+    </footer>
+  </div>
+
+  <!-- ======================================================
+       JAVASCRIPT
+  =======================================================-->
+  <script>
+    // ---- LOGIN ----
+    function login() {
+      let user = document.getElementById("username").value;
+      let pass = document.getElementById("password").value;
+      if (user.trim() !== "" && pass.trim() !== "") {
+        document.getElementById("loginPage").style.display = "none";
+        document.getElementById("portfolioPage").style.display = "block";
+        generateDays();
+        revealCards();
+      } else {
+        alert("Silakan isi username dan password terlebih dahulu!");
+      }
+    }
+
+    // ---- LOGOUT ----
+    function logout() {
+      document.getElementById("portfolioPage").style.display = "none";
+      document.getElementById("loginPage").style.display = "flex";
+      document.getElementById("username").value = "";
+      document.getElementById("password").value = "";
+    }
+
+    // ---- GENERATE 300 DAYS ----
+    function generateDays() {
+      let list = document.getElementById("daysList");
+      if (!list) return;
+      list.innerHTML = "";
+      for (let i = 1; i <= 300; i++) {
+        let li = document.createElement("li");
+        li.textContent = "Hari ke-" + i + ": Aktivitas / Catatan hari ini.";
+        list.appendChild(li);
+      }
+    }
+
+    // ---- ANIMASI CARD SAAT MUNCUL ----
+    function revealCards() {
+      let cards = document.querySelectorAll(".card");
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.classList.add("show");
+        }, index * 300);
+      });
+    }
+  </script>
+</body>
+</html>
+
